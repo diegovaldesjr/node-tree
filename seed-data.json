@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "name": "node-1",
+      "children": [
+        {
+          "name": "node-3",
+          "children": [
+            {
+              "name": "node-5",
+              "children": [
+                {
+                  "name": "node-6",
+                  "children": [
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "node-4"
+        }
+      ]
+    },
+    {
+      "name": "node-2"
+    }
+  ]
+}
