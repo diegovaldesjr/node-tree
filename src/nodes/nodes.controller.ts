@@ -32,7 +32,7 @@ export class NodesController {
   }
 
   @Get()
-  async getAll() {
+  async getAll(): Promise<Node[]> {
     return await this.nodesService.getAll()
   }
 }

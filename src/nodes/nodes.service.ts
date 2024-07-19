@@ -26,7 +26,7 @@ export class NodesService {
     return this.nodeRepository.findById(id)
   }
 
-  async getAll() {
+  async getAll(): Promise<Node[]> {
     return this.nodeRepository.findAll()
   }
 }

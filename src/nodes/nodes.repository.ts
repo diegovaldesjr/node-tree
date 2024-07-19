@@ -96,7 +96,7 @@ export class NodesRepository {
     return await this.findRoot(parentNode) 
   }
 
-  async findAll() {
+  async findAll(): Promise<Node[]> {
     return this.nodeModel.find()
   }
 }
