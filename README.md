@@ -1,4 +1,4 @@
-# Árbol General de Nodos - Proyecto RESTful
+# Implementación Árbol General de Nodos
 
 Este proyecto es una implementación de un servicio RESTful en TypeScript y NestJS para gestionar un árbol general de nodos. La aplicación permite realizar operaciones CRUD en nodos y obtener el nodo raíz desde cualquier nodo. Utiliza MongoDB como base de datos y está configurado con Docker y Docker Compose.
 
@@ -25,6 +25,7 @@ Este proyecto es una implementación de un servicio RESTful en TypeScript y Nest
    git clone https://github.com/diegovaldesjr/node-tree.git
    cd node-tree
    ```
+
 ## Configuración
 
 1. **Configura el archivo `.env`:**
@@ -68,10 +69,28 @@ Este proyecto es una implementación de un servicio RESTful en TypeScript y Nest
 ## Endpoints
 
 - **POST /nodes**: Inserta un nuevo nodo.
-- **PUT /nodes/**: Edita un nodo existente.
-- **DELETE /nodes/**: Elimina un nodo y sus hijos.
-- **GET /nodes/root/**: Obtiene el nodo raíz desde un nodo dado.
-- **GET /nodes/**: Obtiene un nodo por su ID.
+
+```json
+//Body
+{
+	"name": "node",
+	"parentId": "" //Campo opcional
+}
+```
+
+- **PUT /nodes/:id**: Edita un nodo existente.
+
+```json
+//Body
+{
+	"name": "node"
+}
+```
+
+- **DELETE /nodes/:id**: Elimina un nodo y sus hijos.
+- **GET /nodes/root/:id**: Obtiene el nodo raíz desde un nodo dado.
+- **GET /nodes/:id**: Obtiene un nodo por su ID.
+- **GET /nodes/**: Obtiene todos los nodos.
 
 ## Scripts de Seed
 
@@ -82,3 +101,25 @@ npm run seed
 ```
 
 Este comando leerá los datos de `seed-data.json` y los insertará en la base de datos.
+
+### Formato de archivo JSON
+
+Es un archivo formato JSON donde el árbol empieza desde *nodes*, cada nodo tendrá su campo *name* y *children*, en el cual tendría los hijos del nodo. Acá, les dejo un ejemplo:
+
+```json
+{
+  "nodes": [
+    {
+      "name": "node-1",
+      "children": [
+        {
+          "name": "node-3"
+        }
+      ]
+    },
+    {
+      "name": "node-2"
+    }
+  ]
+}
+```
